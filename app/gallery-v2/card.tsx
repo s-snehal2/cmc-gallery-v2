@@ -74,7 +74,7 @@ export default function MainCard1() {
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.9, opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="w-full  md:w-[95%] lg:w-full p-2"
+                      className="w-full  p-2"
                     >
                       <SmalllCard
                         card={d}
