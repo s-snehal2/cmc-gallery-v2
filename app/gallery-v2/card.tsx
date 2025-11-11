@@ -58,7 +58,7 @@ export default function MainCard1() {
             transition={{ duration: 1, ease: "easeIn" }}
             className="relative"
           >
-            <Card className="relative bg-[#F1E2D2] rounded-md overflow-hidden ">
+            <Card className=" bg-[#F1E2D2] rounded-md overflow-hidden ">
               {/* Small card render */}
               <AnimatePresence>
                 {activeCardId === d.id && (
@@ -68,6 +68,7 @@ export default function MainCard1() {
                     exit={{ opacity: 0, scale: 0.9, y: 10 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     className="absolute inset-0  flex justify-center items-center bg-black/40 backdrop-blur-xl z-10"
+                    onClick={() => setActiveCardId(null)}
                   >
                     <motion.div
                       initial={{ scale: 0.9, opacity: 0 }}
@@ -84,8 +85,8 @@ export default function MainCard1() {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <CardHeader className="relative flex flex-col justify-center items-center p-2 h-[30px] md:h-[35px] lg:h-[45px]">
-                <CardTitle className="text-center text-xs md:text-sm font-semibold">
+              <CardHeader className="relative flex flex-col justify-center items-center gap-1 p-2 h-[30px] md:h-[35px] lg:h-[45px]">
+                <CardTitle className="text-center text-md md:text-lg font-semibold">
                   {d.title}
                 </CardTitle>
 
@@ -98,10 +99,10 @@ export default function MainCard1() {
                   />
                 </div>
 
-                <div className="text-[10px] md:text-xs text-center font-normal">
+                <div className="text-sm md:text-md text-center font-normal uppercase">
                   {d.code} | {d.size} | {d.area}
                 </div>
-                <div className="text-[10px] md:text-xs text-center font-normal">
+                <div className="text-sm md:text-md text-center font-normal">
                   Req: {d.req}
                 </div>
               </CardHeader>
