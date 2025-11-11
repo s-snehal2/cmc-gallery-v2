@@ -25,7 +25,7 @@ export default function SmalllCard({
   onClose: () => void;
 }) {
   return (
-    <Card className="relative bg-secondary w-3/4 md:w-lg lg:w-xl p-2 mx-auto rounded-md  ">
+    <Card className="relative bg-secondary p-2 mx-auto rounded-md  ">
       <Carousel>
         <CardHeader className="relative flex flex-col justify-center items-center gap-1 p-2 h-[38px] md:h-[50px]">
           <CardTitle className="text-center text-[12px] md:text-sm font-medium">
@@ -48,16 +48,18 @@ export default function SmalllCard({
           </div>
         </CardHeader>
         <CarouselContent>
-          <CarouselItem>
-            <CardContent className="relative aspect-video overflow-hidden  rounded-md">
-              <Image
-                src={card.image}
-                alt="images"
-                fill
-                className="object-cover p-4 hover:scale-105 "
-              />
-            </CardContent>
-          </CarouselItem>
+          {card.image.map((img, index) => (
+            <CarouselItem key={index}>
+              <CardContent className="relative aspect-video overflow-hidden  rounded-md">
+                <Image
+                  src={img}
+                  alt="images"
+                  fill
+                  className="object-cover p-4 hover:scale-105 "
+                />
+              </CardContent>
+            </CarouselItem>
+          ))}
         </CarouselContent>
         <CarouselPrevious className="absolute translate-x-10 bg-primary text-secondary size-6 md:size-8" />
         <CarouselNext className="absolute -translate-x-10 bg-primary text-secondary size-6 md:size-8" />

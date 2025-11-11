@@ -15,7 +15,7 @@ export type Data = {
   size?: string;
   area?: string;
   req?: string;
-  image: string;
+  image: string[];
 };
 
 export default function MainCard1() {
@@ -40,7 +40,7 @@ export default function MainCard1() {
             className="relative aspect-video overflow-hidden"
           >
             <Image
-              src={d.image}
+              src={d.image[0]}
               alt={d.title}
               fill
               priority
@@ -50,72 +50,69 @@ export default function MainCard1() {
         ))}
 
         {/* --- CARD SECTIONS --- */}
-        {cardSections.map((card) => (
+        {cardSections.map((d) => (
           <motion.div
-            key={card.id}
+            key={d.id}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeIn" }}
             className="relative"
           >
-            <Card className="relative bg-[#F1E2D2] rounded-none overflow-hidden">
+            <Card className="relative bg-[#F1E2D2] rounded-md overflow-hidden ">
+              {/* Small card render */}
+              <AnimatePresence>
+                {activeCardId === d.id && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="absolute inset-0  flex justify-center items-center bg-black/40 backdrop-blur-xl z-10"
+                  >
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.9, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full  md:w-[95%] lg:w-full p-2"
+                    >
+                      <SmalllCard
+                        card={d}
+                        onClose={() => setActiveCardId(null)}
+                      />
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <CardHeader className="relative flex flex-col justify-center items-center p-2 h-[30px] md:h-[35px] lg:h-[45px]">
                 <CardTitle className="text-center text-xs md:text-sm font-semibold">
-                  {card.title}
+                  {d.title}
                 </CardTitle>
 
-                <div className="absolute top-1/2 -translate-y-1/2 right-2 md:right-4 cursor-pointer z-20">
+                <div className="absolute top-1/2 -translate-y-1/2 right-2 md:right-4 ">
                   <CirclePlay
                     className="w-5 h-5 md:w-7 md:h-7 transition-transform duration-200 hover:scale-110"
                     onClick={() =>
-                      setActiveCardId((prev) =>
-                        prev === card.id ? null : card.id
-                      )
+                      setActiveCardId((prev) => (prev === d.id ? null : d.id))
                     }
                   />
                 </div>
 
                 <div className="text-[10px] md:text-xs text-center font-normal">
-                  {card.code} | {card.size} | {card.area}
+                  {d.code} | {d.size} | {d.area}
                 </div>
                 <div className="text-[10px] md:text-xs text-center font-normal">
-                  Req: {card.req}
+                  Req: {d.req}
                 </div>
               </CardHeader>
 
               <CardContent className="relative aspect-video overflow-hidden">
                 <Image
-                  src={card.image}
-                  alt={card.title}
+                  src={d.image[0]}
+                  alt={d.title}
                   fill
                   className="object-contain"
                 />
-
-                {/* Small card render */}
-                <AnimatePresence>
-                  {activeCardId === card.id && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                      className="absolute inset-0 flex justify-center items-center bg-black/40 backdrop-blur-xl z-10"
-                    >
-                      <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.9, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="w-full"
-                      >
-                        <SmalllCard
-                          card={card}
-                          onClose={() => setActiveCardId(null)}
-                        />
-                      </motion.div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </CardContent>
             </Card>
           </motion.div>
@@ -131,7 +128,7 @@ export default function MainCard1() {
             className="relative aspect-video overflow-hidden"
           >
             <Image
-              src={d.image}
+              src={d.image[0]}
               alt={d.title}
               fill
               className="object-contain"

@@ -8,7 +8,8 @@ export const carddata: Data[] = [
     size: "",
     area: "",
     req: "",
-    image:"/cmc-images/image1.webp"
+    image:["/cmc-images/image1.webp"]
+
   },
    {
    id:2,
@@ -17,7 +18,7 @@ export const carddata: Data[] = [
     size: "",
     area: "",
     req: "",
-    image:"/cmc-images/image2.webp"
+    image:["/cmc-images/image2.webp"]
   },
     {
    id:3,
@@ -26,7 +27,7 @@ export const carddata: Data[] = [
     size: "",
     area: "",
     req: "",
-    image:"/cmc-images/image3.webp"
+    image:["/cmc-images/image3.webp"]
   },
    {
    id:4,
@@ -35,7 +36,8 @@ export const carddata: Data[] = [
     size: "",
     area: "",
     req: "",
-    image:"/cmc-images/image4.webp"
+    image:["/cmc-images/image4.webp"
+      ]
   },
 
   {
@@ -45,7 +47,9 @@ export const carddata: Data[] = [
     size: "0 x NaN inch",
     area: "null sqft",
     req: "590 sqft",
-    image:"/cmc-images/slab1.PNG"
+    image:["/cmc-images/slab1.PNG",
+      "/cmc-images/slab1.PNG",
+      "/cmc-images/slab1.PNG",]
   },
   { id:6,
     title: "GRIGO ARMANI",
@@ -53,7 +57,9 @@ export const carddata: Data[] = [
     size: "96 x 78 inch",
     area: "sold out",
     req: "3000 sqft",
-    image:"/cmc-images/slab2.PNG"
+    image:["/cmc-images/slab2.PNG",
+      "/cmc-images/slab2.PNG",
+      "/cmc-images/slab2.PNG",]
   },
   { id:7,
     title: "ULTRA WHITE",
@@ -61,7 +67,9 @@ export const carddata: Data[] = [
     size: "86 x 50 inch",
     area: "sold out",
     req: "1500 sqft",
-    image:"/cmc-images/slab3.PNG"
+    image:["/cmc-images/slab3.PNG",
+      "/cmc-images/slab3.PNG",
+      "/cmc-images/slab3.PNG",]
   },
   { id:8,
     title: "OTTOMAN BEIGE",
@@ -69,7 +77,9 @@ export const carddata: Data[] = [
     size: "79 x 74 inch",
     area: "1881 sqft",
      req: "200 sqft",
-     image:"/cmc-images/slab4.PNG"
+     image:["/cmc-images/slab4.PNG",
+      "/cmc-images/slab4.PNG",
+      "/cmc-images/slab4.PNG",]
   },
   { id:9,
     title: "CRYSTAL WHITE",
@@ -77,7 +87,9 @@ export const carddata: Data[] = [
     size: "126 x 63 inch",
     area: "sold out",
     req: "200 sqft",
-    image:"/cmc-images/slab5.PNG"
+    image:["/cmc-images/slab5.PNG",
+      "/cmc-images/slab5.PNG",
+      "/cmc-images/slab5.PNG",]
   },
   { id:10,
     title: "INDIAN PANDA",
@@ -85,7 +97,9 @@ export const carddata: Data[] = [
     size: "94 x 57 inch",
     area: "148 sqft",
      req: "200 sqft",
-     image:"/cmc-images/slab6.PNG"
+     image:["/cmc-images/slab6.PNG",
+      "/cmc-images/slab6.PNG",
+      "/cmc-images/slab6.PNG",]
   },
   { id:11,
     title: "ABSTRACT GREY",
@@ -93,7 +107,9 @@ export const carddata: Data[] = [
     size: "88 x 78 inch",
     area: "3580 sqft",
     req: "150 sqft",
-    image:"/cmc-images/slab7.PNG"
+    image:["/cmc-images/slab7.PNG",
+      "/cmc-images/slab7.PNG",
+      "/cmc-images/slab7.PNG",]
     
   },
   { id:12,
@@ -102,42 +118,54 @@ export const carddata: Data[] = [
     size: "114 x 72 inch",
     area: "911 sqft",
      req: "200 sqft",
-     image:"/cmc-images/slab8.PNG"
+      image:["/cmc-images/slab8.PNG",
+      "/cmc-images/slab8.PNG",
+      "/cmc-images/slab8.PNG",]
+  },
+  { id:13,
+    title: "ARMANI BROWN",
+    code: "LO00679",
+    size: "114 x 72 inch",
+    area: "911 sqft",
+     req: "200 sqft",
+      image:["/cmc-images/slab9.PNG",
+      "/cmc-images/slab9.PNG",
+      "/cmc-images/slab9.PNG",]
   },
    {
-   id:13,
+   id:14,
     title: "Page 5",
     code: "",
     size: "",
     area: "",
     req: "",
-    image:"/cmc-images/image5.webp"
+    image:["/cmc-images/image5.webp"]
   },
    {
-   id:14,
+   id:15,
     title: "Page 6",
     code: "",
     size: "",
     area: "",
     req: "",
-    image:"/cmc-images/image6.webp"
+    image:["/cmc-images/image6.webp"]
   },
    {
-   id:15,
+   id:16,
     title: "Page 7",
     code: "",
     size: "",
     area: "",
     req: "",
-    image:"/cmc-images/image8.webp"
+    image:["/cmc-images/image8.webp"]
   },
    {
-   id:16,
+   id:17,
     title: "Page 8",
     code: "",
     size: "",
     area: "",
     req: "",
-    image:"/cmc-images/image9.webp"
+    image:["/cmc-images/image9.webp"]
   },
 ];
