@@ -1,0 +1,144 @@
+"use client";
+
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { CirclePlay } from "lucide-react";
+import { carddata } from "./data";
+import { useState } from "react";
+import SmalllCard from "./smalll-card";
+
+export type Data = {
+  id: number;
+  title: string;
+  code?: string;
+  size?: string;
+  area?: string;
+  req?: string;
+  image: string;
+};
+
+export default function MainCard1() {
+  const [activeCardId, setActiveCardId] = useState<number | null>(null);
+
+  const imageSections = carddata.filter((d) => !d.code);
+  const cardSections = carddata.filter((d) => d.code);
+
+  const topImages = imageSections.slice(0, imageSections.length - 4);
+  const bottomImages = imageSections.slice(-4);
+
+  return (
+    <div className="w-full mx-auto">
+      <div className="grid grid-cols-1 gap-2 p-2 max-w-md md:max-w-2xl lg:max-w-4xl mx-auto">
+        {/* --- TOP IMAGES --- */}
+        {topImages.map((d) => (
+          <motion.div
+            key={d.id}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeIn" }}
+            className="relative aspect-video overflow-hidden"
+          >
+            <Image
+              src={d.image}
+              alt={d.title}
+              fill
+              priority
+              className="object-contain"
+            />
+          </motion.div>
+        ))}
+
+        {/* --- CARD SECTIONS --- */}
+        {cardSections.map((card) => (
+          <motion.div
+            key={card.id}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeIn" }}
+            className="relative"
+          >
+            <Card className="relative bg-[#F1E2D2] rounded-none overflow-hidden">
+              <CardHeader className="relative flex flex-col justify-center items-center p-2 h-[30px] md:h-[35px] lg:h-[45px]">
+                <CardTitle className="text-center text-xs md:text-sm font-semibold">
+                  {card.title}
+                </CardTitle>
+
+                <div className="absolute top-1/2 -translate-y-1/2 right-2 md:right-4 cursor-pointer z-20">
+                  <CirclePlay
+                    className="w-5 h-5 md:w-7 md:h-7 transition-transform duration-200 hover:scale-110"
+                    onClick={() =>
+                      setActiveCardId((prev) =>
+                        prev === card.id ? null : card.id
+                      )
+                    }
+                  />
+                </div>
+
+                <div className="text-[10px] md:text-xs text-center font-normal">
+                  {card.code} | {card.size} | {card.area}
+                </div>
+                <div className="text-[10px] md:text-xs text-center font-normal">
+                  Req: {card.req}
+                </div>
+              </CardHeader>
+
+              <CardContent className="relative aspect-video overflow-hidden">
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className="object-contain"
+                />
+
+                {/* Small card render */}
+                <AnimatePresence>
+                  {activeCardId === card.id && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      className="absolute inset-0 flex justify-center items-center bg-black/40 backdrop-blur-xl z-10"
+                    >
+                      <motion.div
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.9, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full"
+                      >
+                        <SmalllCard
+                          card={card}
+                          onClose={() => setActiveCardId(null)}
+                        />
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+
+        {/*Bottom IMAGES */}
+        {bottomImages.map((d) => (
+          <motion.div
+            key={d.id}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeIn" }}
+            className="relative aspect-video overflow-hidden"
+          >
+            <Image
+              src={d.image}
+              alt={d.title}
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
